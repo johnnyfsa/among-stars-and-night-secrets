@@ -32,6 +32,17 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    [Header("Charges")]
+
+    [SerializeField]
+    int numberOfChargesCarried;
+
+    public int NumberOfChargesCarried
+    {
+        get { return numberOfChargesCarried; }
+        set { numberOfChargesCarried = value; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
