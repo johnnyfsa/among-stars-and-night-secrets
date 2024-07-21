@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spring : MonoBehaviour
+public class Spring : MonoBehaviour, IChargeable
 {
     private Animator animator;
     void Awake()
@@ -24,6 +24,9 @@ public class Spring : MonoBehaviour
 
     [SerializeField]
     float springForce = 10;
+
+    [SerializeField]
+    float springForceCharge = 5;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -49,4 +52,13 @@ public class Spring : MonoBehaviour
         IsActive = false;
     }
 
+    public void Charge()
+    {
+        springForce += springForceCharge;
+    }
+
+    public void Discharge()
+    {
+        springForce -= springForceCharge;
+    }
 }

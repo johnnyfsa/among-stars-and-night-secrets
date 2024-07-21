@@ -7,6 +7,9 @@ using UnityEngine.Windows;
 
 public class Player : MonoBehaviour
 {
+    public event System.Action OnCharge;
+    public event System.Action OnDischarge;
+
     [SerializeField]
 
     [Header("Movement")]
@@ -43,6 +46,11 @@ public class Player : MonoBehaviour
         set { numberOfChargesCarried = value; }
     }
 
+    public int MaxNumberOfCharges { get { return maxNumberOfCharges; } set { maxNumberOfCharges = value; } }
+    [SerializeField]
+    private int maxNumberOfCharges;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +68,18 @@ public class Player : MonoBehaviour
     public void Move(InputAction.CallbackContext callback)
     {
         direction = callback.ReadValue<Vector2>().normalized.x;
+        if (callback.performed)
+        {
+            if (callback.ReadValue<Vector2>().normalized.y > 0)
+            {
+                OnCharge?.Invoke();
+            }
+            else if (callback.ReadValue<Vector2>().normalized.y < 0)
+            {
+                OnDischarge?.Invoke();
+            }
+        }
+
     }
 
     public void Jump(InputAction.CallbackContext callback)
