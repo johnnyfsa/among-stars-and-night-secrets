@@ -10,11 +10,31 @@ public class Player : MonoBehaviour
     public event System.Action OnCharge;
     public event System.Action OnDischarge;
 
-    [SerializeField]
+
+    [Header("Animation")]
+    private Animator animator;
+
 
     [Header("Movement")]
+
+    [SerializeField]
     float moveSpeed;
-    private float direction;
+    private float horizontalMovement;
+
+    [SerializeField]
+    private bool isFacingRight = true;
+
+    [SerializeField]
+    private bool isMoving;
+    public bool IsMoving
+    {
+        get { return isMoving; }
+        set
+        {
+            animator.SetBool(AnimationStrings.isMoving, value);
+            isMoving = value;
+        }
+    }
 
     [Header("Jumping")]
     public Transform groundCheckPos;
@@ -25,7 +45,11 @@ public class Player : MonoBehaviour
     public bool IsGrounded
     {
         get { return isGrounded; }
-        set { isGrounded = value; }
+        set
+        {
+            animator.SetBool(AnimationStrings.isGrounded, value);
+            isGrounded = value;
+        }
     }
 
     public LayerMask groundLayer;
@@ -50,11 +74,27 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int maxNumberOfCharges;
 
+    [SerializeField]
+    private bool isCharged;
+    public bool IsCharged
+    {
+        get { return isCharged; }
+        set
+        {
+            animator.SetBool(AnimationStrings.isCharged, value);
+            isCharged = value;
+        }
+    }
+
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        direction = 0;
+        horizontalMovement = 0;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -62,12 +102,43 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         GroundCheck();
-        rb.velocity = new Vector2(direction * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
+        MovementCheck();
+        Flip();
+    }
+
+    void Update()
+    {
+        ChargeCheck();
+    }
+
+    private void ChargeCheck()
+    {
+        if (numberOfChargesCarried > 0)
+        {
+            IsCharged = true;
+        }
+        else
+        {
+            IsCharged = false;
+        }
+    }
+
+    private void MovementCheck()
+    {
+        if (horizontalMovement != 0 && IsGrounded)
+        {
+            IsMoving = true;
+        }
+        else
+        {
+            IsMoving = false;
+        }
     }
 
     public void Move(InputAction.CallbackContext callback)
     {
-        direction = callback.ReadValue<Vector2>().normalized.x;
+        horizontalMovement = callback.ReadValue<Vector2>().normalized.x;
         if (callback.performed)
         {
             if (callback.ReadValue<Vector2>().normalized.y > 0)
@@ -80,6 +151,17 @@ public class Player : MonoBehaviour
             }
         }
 
+    }
+
+    private void Flip()
+    {
+        if (isFacingRight && horizontalMovement < 0f || !isFacingRight && horizontalMovement > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
     }
 
     public void Jump(InputAction.CallbackContext callback)

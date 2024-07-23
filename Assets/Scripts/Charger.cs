@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class Charger : MonoBehaviour
 {
+    public event Action OnCharge;
+    public event Action OnDischarge;
+
     [SerializeField]
     GameObject[] chargeableObjects;
     private List<IChargeable> chargeables;
@@ -50,6 +53,7 @@ public class Charger : MonoBehaviour
             foreach (IChargeable chargeable in chargeables)
             {
                 chargeable.Charge();
+                OnCharge?.Invoke();
             }
             player.NumberOfChargesCarried = Mathf.Max(player.NumberOfChargesCarried - 1, 0);
             numberOfChargesCarried++;
@@ -63,8 +67,9 @@ public class Charger : MonoBehaviour
             foreach (IChargeable chargeable in chargeables)
             {
                 chargeable.Discharge();
+                OnDischarge?.Invoke();
             }
-            player.NumberOfChargesCarried = Mathf.Min(player.NumberOfChargesCarried + 1, numberOfChargesCarried);
+            player.NumberOfChargesCarried = Mathf.Min(player.NumberOfChargesCarried + 1, numberOfChargesCarried + player.NumberOfChargesCarried);
             numberOfChargesCarried = Mathf.Max(numberOfChargesCarried - 1, 0);
 
         }
