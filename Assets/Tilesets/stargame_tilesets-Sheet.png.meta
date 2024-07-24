@@ -786,6 +786,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: stargame_tilesets-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aae029e6f0bc67140acb8e7dd4f9c21b
+      internalID: 1280129048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stargame_tilesets-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68774c37d6a7421428b487b925c59cff
+      internalID: -1471917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stargame_tilesets-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 365f929f1d3d1f0458c1a66289203182
+      internalID: -1032129785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stargame_tilesets-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbccdf284b183ea47b3613ab596d492c
+      internalID: -197056074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -822,6 +906,10 @@ TextureImporter:
       stargame_tilesets-Sheet_29: -1806203321
       stargame_tilesets-Sheet_3: -599289065
       stargame_tilesets-Sheet_30: 641230660
+      stargame_tilesets-Sheet_31: 1280129048
+      stargame_tilesets-Sheet_32: -1471917
+      stargame_tilesets-Sheet_33: -1032129785
+      stargame_tilesets-Sheet_34: -197056074
       stargame_tilesets-Sheet_4: -1559523488
       stargame_tilesets-Sheet_5: -475742402
       stargame_tilesets-Sheet_6: -1154257751

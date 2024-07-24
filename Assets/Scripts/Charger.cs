@@ -11,6 +11,8 @@ public class Charger : MonoBehaviour
 
     [SerializeField]
     GameObject[] chargeableObjects;
+    [SerializeField]
+    GameObject[] chargeVisuals;
     private List<IChargeable> chargeables;
 
     [SerializeField]
@@ -57,6 +59,7 @@ public class Charger : MonoBehaviour
             }
             player.NumberOfChargesCarried = Mathf.Max(player.NumberOfChargesCarried - 1, 0);
             numberOfChargesCarried++;
+            chargeVisuals[numberOfChargesCarried - 1].SetActive(true);
         }
     }
 
@@ -71,7 +74,7 @@ public class Charger : MonoBehaviour
             }
             player.NumberOfChargesCarried = Mathf.Min(player.NumberOfChargesCarried + 1, numberOfChargesCarried + player.NumberOfChargesCarried);
             numberOfChargesCarried = Mathf.Max(numberOfChargesCarried - 1, 0);
-
+            chargeVisuals[numberOfChargesCarried].SetActive(false);
         }
     }
 
