@@ -86,6 +86,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private bool hasGoalStar;
+
+    public bool HasGoalStar
+    {
+        get { return hasGoalStar; }
+        set { hasGoalStar = value; }
+    }
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -114,7 +123,7 @@ public class Player : MonoBehaviour
 
     private void ChargeCheck()
     {
-        if (numberOfChargesCarried > 0)
+        if (numberOfChargesCarried > 0 || HasGoalStar)
         {
             IsCharged = true;
         }

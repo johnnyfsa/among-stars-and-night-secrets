@@ -67,14 +67,23 @@ public class Charger : MonoBehaviour
     {
         if (isInChargingArea && numberOfChargesCarried > 0)
         {
-            foreach (IChargeable chargeable in chargeables)
+            //player gets 1 charge back but it cannot be more than the max the player can carry
+            if (player.NumberOfChargesCarried + 1 <= player.MaxNumberOfCharges)
             {
-                chargeable.Discharge();
-                OnDischarge?.Invoke();
+                player.NumberOfChargesCarried++;
+                numberOfChargesCarried = Mathf.Max(numberOfChargesCarried - 1, 0);
+                foreach (IChargeable chargeable in chargeables)
+                {
+                    chargeable.Discharge();
+                }
+                chargeVisuals[numberOfChargesCarried].SetActive(false);
+                if (numberOfChargesCarried == 0)
+                {
+                    OnDischarge?.Invoke();
+                }
+
             }
-            player.NumberOfChargesCarried = Mathf.Min(player.NumberOfChargesCarried + 1, numberOfChargesCarried + player.NumberOfChargesCarried);
-            numberOfChargesCarried = Mathf.Max(numberOfChargesCarried - 1, 0);
-            chargeVisuals[numberOfChargesCarried].SetActive(false);
+
         }
     }
 

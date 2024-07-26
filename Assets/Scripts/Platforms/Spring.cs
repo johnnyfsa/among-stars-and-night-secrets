@@ -7,7 +7,7 @@ public class Spring : MonoBehaviour, IChargeable
     private Animator animator;
     void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     [SerializeField]
