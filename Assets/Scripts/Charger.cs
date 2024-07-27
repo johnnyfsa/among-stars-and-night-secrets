@@ -9,6 +9,9 @@ public class Charger : MonoBehaviour
     public event Action OnCharge;
     public event Action OnDischarge;
 
+    public event Action OnChargesCarriedNumberIncreased;
+    public event Action OnChargesCarriedNumberDecreased;
+
     [SerializeField]
     GameObject[] chargeableObjects;
     [SerializeField]
@@ -22,6 +25,8 @@ public class Charger : MonoBehaviour
 
     [SerializeField]
     int numberOfChargesCarried;
+
+    public int NumberOfChargesCarried { get => numberOfChargesCarried; set => numberOfChargesCarried = value; }
 
     void Awake()
     {
@@ -58,6 +63,7 @@ public class Charger : MonoBehaviour
                 OnCharge?.Invoke();
             }
             player.NumberOfChargesCarried = Mathf.Max(player.NumberOfChargesCarried - 1, 0);
+            OnChargesCarriedNumberIncreased?.Invoke();
             numberOfChargesCarried++;
             chargeVisuals[numberOfChargesCarried - 1].SetActive(true);
         }
@@ -72,6 +78,7 @@ public class Charger : MonoBehaviour
             {
                 player.NumberOfChargesCarried++;
                 numberOfChargesCarried = Mathf.Max(numberOfChargesCarried - 1, 0);
+                OnChargesCarriedNumberDecreased?.Invoke();
                 foreach (IChargeable chargeable in chargeables)
                 {
                     chargeable.Discharge();
