@@ -10,6 +10,7 @@ public class Charge : MonoBehaviour
         if (collision.gameObject.TryGetComponent<Player>(out Player player))
         {
             player.NumberOfChargesCarried += 1;
+            AudioManager.Instance.PlaySFX(SoundType.Energy_Gathered);
         }
         Destroy(gameObject);
     }

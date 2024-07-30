@@ -23,12 +23,17 @@ public class Wires : MonoBehaviour
     // Duração da transição (em segundos)
     public float transitionDuration = 1.0f;
 
+    [SerializeField]
+    private int maxNumCharges;
+    private int numCharges;
+
     void Awake()
     {
+        numCharges = 0;
         tilemap = GetComponent<Tilemap>();
         tilemapRenderer = GetComponent<TilemapRenderer>();
         chargerScript = charger.GetComponent<Charger>();
-        chargerScript.OnCharge += ChangeTileColorCharge;
+        chargerScript.OnChargesCarriedNumberIncreased += ChangeTileColorCharge;
         chargerScript.OnDischarge += ChangeTileColorDischarge;
 
     }
@@ -46,11 +51,18 @@ public class Wires : MonoBehaviour
     // Evento que aciona a mudança de cor
     public void ChangeTileColorCharge()
     {
-        // Obter o material do tileset
-        Material material = tilemapRenderer.material;
+        numCharges++;
+        if (numCharges == maxNumCharges)
+        {
+            // Obter o material do tileset
+            Material material = tilemapRenderer.material;
 
-        // Iniciar a corização gradual
-        StartCoroutine(ColorizeTiles(material, startColor, endColor, transitionDuration));
+            // Iniciar a corização gradual
+            StartCoroutine(ColorizeTiles(material, startColor, endColor, transitionDuration));
+        }
+
+
+
     }
 
     public void ChangeTileColorDischarge()

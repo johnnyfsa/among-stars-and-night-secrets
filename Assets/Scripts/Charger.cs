@@ -66,6 +66,7 @@ public class Charger : MonoBehaviour
             OnChargesCarriedNumberIncreased?.Invoke();
             numberOfChargesCarried++;
             chargeVisuals[numberOfChargesCarried - 1].SetActive(true);
+            AudioManager.Instance.PlaySFX(SoundType.Energy_Deposited);
         }
     }
 
@@ -88,7 +89,7 @@ public class Charger : MonoBehaviour
                 {
                     OnDischarge?.Invoke();
                 }
-
+                AudioManager.Instance.PlaySFX(SoundType.Energy_Gathered);
             }
 
         }

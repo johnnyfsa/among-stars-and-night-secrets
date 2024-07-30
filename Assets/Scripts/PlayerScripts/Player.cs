@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -20,9 +21,22 @@ public class Player : MonoBehaviour
     [SerializeField]
     float moveSpeed;
     private float horizontalMovement;
-
+    private float verticalMovement;
     [SerializeField]
     private bool isFacingRight = true;
+
+    [SerializeField]
+    private bool isMovingOnStairs;
+
+    public bool IsMovingOnStairs
+    {
+        get { return isMovingOnStairs; }
+        set
+        {
+            animator.SetBool(AnimationStrings.isMovingOnStairs, value);
+            isMovingOnStairs = value;
+        }
+    }
 
     [SerializeField]
     private bool isMoving;
@@ -53,6 +67,7 @@ public class Player : MonoBehaviour
     }
 
     public LayerMask groundLayer;
+    public LayerMask platformLayer;
 
     [SerializeField]
     private float jumpForce = 5.0f;
@@ -95,6 +110,31 @@ public class Player : MonoBehaviour
         set { hasGoalStar = value; }
     }
 
+    [Header("StairsMovement")]
+
+    Collider2D playerCollider;
+    [SerializeField]
+    bool isOnStairs;
+    [SerializeField]
+    bool isOnStairsArea;
+    public bool IsOnStairsArea
+    {
+        get { return isOnStairsArea; }
+        set { isOnStairsArea = value; }
+    }
+    public bool IsOnStairs
+    {
+        get { return isOnStairs; }
+        set
+        {
+            isOnStairs = value;
+            animator.SetBool(AnimationStrings.isOnStairs, value);
+        }
+    }
+
+    private float originalMoveSpeed;
+    private float reducedMoveSpeed;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -104,21 +144,68 @@ public class Player : MonoBehaviour
     void Start()
     {
         horizontalMovement = 0;
+        originalMoveSpeed = moveSpeed;
+        reducedMoveSpeed = moveSpeed * 0.5f;
         rb = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         GroundCheck();
-        rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
+        CheckHorizontalVelocityModifierWhileJumping();
+        if (!IsOnStairs)
+        {
+            rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
+        }
+        else if (IsOnStairs && !IsGrounded)
+        {
+            rb.velocity = new Vector2(0, verticalMovement * moveSpeed);
+        }
+        else if (IsGrounded && IsOnStairs)
+        {
+            rb.velocity = new Vector2(horizontalMovement * moveSpeed, verticalMovement * moveSpeed);
+        }
         MovementCheck();
         Flip();
+    }
+
+    private void CheckHorizontalVelocityModifierWhileJumping()
+    {
+
+        if (!IsGrounded)
+        {
+            moveSpeed = reducedMoveSpeed;
+        }
+        else
+        {
+            moveSpeed = originalMoveSpeed;
+        }
     }
 
     void Update()
     {
         ChargeCheck();
+        ChechStairs();
+    }
+
+    private void ChechStairs()
+    {
+        if (!IsOnStairsArea)
+        {
+            IsOnStairs = false;
+        }
+        if (IsOnStairs && !IsGrounded)
+        {
+            rb.gravityScale = 0;
+            playerCollider.excludeLayers = LayerMask.GetMask("Platforms");
+        }
+        else
+        {
+            rb.gravityScale = 1;
+            playerCollider.excludeLayers = LayerMask.GetMask("Nothing");
+        }
     }
 
     private void ChargeCheck()
@@ -143,11 +230,20 @@ public class Player : MonoBehaviour
         {
             IsMoving = false;
         }
+        if (verticalMovement != 0 && IsOnStairs)
+        {
+            IsMovingOnStairs = true;
+        }
+        else
+        {
+            IsMovingOnStairs = false;
+        }
     }
 
     public void Move(InputAction.CallbackContext callback)
     {
         horizontalMovement = callback.ReadValue<Vector2>().normalized.x;
+        verticalMovement = callback.ReadValue<Vector2>().normalized.y;
         if (callback.performed)
         {
             if (callback.ReadValue<Vector2>().normalized.y > 0)
@@ -157,6 +253,13 @@ public class Player : MonoBehaviour
             else if (callback.ReadValue<Vector2>().normalized.y < 0)
             {
                 OnDischarge?.Invoke();
+            }
+        }
+        if (callback.performed && callback.ReadValue<Vector2>().normalized.y != 0)
+        {
+            if (isOnStairsArea)
+            {
+                IsOnStairs = true;
             }
         }
 
@@ -181,20 +284,35 @@ public class Player : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
-
+            AudioManager.Instance.PlaySFX(SoundType.Normal_Jump);
         }
     }
 
     private void GroundCheck()
     {
-        if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
+        if (!IsOnStairs)
         {
-            IsGrounded = true;
+            if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer) || Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, platformLayer))
+            {
+                IsGrounded = true;
+            }
+            else
+            {
+                IsGrounded = false;
+            }
         }
         else
         {
-            IsGrounded = false;
+            if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
+            {
+                IsGrounded = true;
+            }
+            else
+            {
+                IsGrounded = false;
+            }
         }
+
     }
 
     private void OnDrawGizmosSelected()

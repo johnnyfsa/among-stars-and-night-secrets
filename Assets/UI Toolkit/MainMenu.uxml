@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/UIStyles/MainMenu.uss?fileID=7433441132597879392&amp;guid=d9689574749ad074d8cd0b393e43c125&amp;type=3#MainMenu" />
+    <ui:VisualElement style="flex-grow: 1; align-items: auto; justify-content: center; flex-direction: row;">
+        <ui:VisualElement name="left" style="flex-grow: 1; width: 100%; height: 100%;" />
+        <ui:VisualElement name="middle" style="flex-grow: 1; width: 100%; height: 100%; justify-content: center; background-image: none;">
+            <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartBtn" class="btn_standard" style="-unity-font-style: bold; -unity-font: url(&quot;project://database/Assets/Fonts/PixelifySans-VariableFont_wght.ttf?fileID=12800000&amp;guid=1c177f0b5f1a58c4897d1c5dd1cd2daf&amp;type=3#PixelifySans-VariableFont_wght&quot;); -unity-font-definition: initial;" />
+            <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitBtn" class="btn_standard" style="-unity-font-style: bold; -unity-font: url(&quot;project://database/Assets/Fonts/PixelifySans-VariableFont_wght.ttf?fileID=12800000&amp;guid=1c177f0b5f1a58c4897d1c5dd1cd2daf&amp;type=3#PixelifySans-VariableFont_wght&quot;); -unity-font-definition: initial;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="right" style="flex-grow: 1; width: 100%; height: 100%;" />
+    </ui:VisualElement>
+</ui:UXML>

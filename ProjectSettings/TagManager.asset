@@ -13,7 +13,7 @@ TagManager:
   - Water
   - UI
   - Chargers
-  - 
+  - Platforms
   - 
   - 
   - 
@@ -53,4 +53,7 @@ TagManager:
     locked: 0
   - name: Wires
     uniqueID: 3484909039
+    locked: 0
+  - name: MovingPlatforms
+    uniqueID: 1004595181
     locked: 0

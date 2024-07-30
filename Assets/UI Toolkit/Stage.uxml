@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Top" style="flex-grow: 1; height: 10%; width: 100%; flex-direction: row; justify-content: space-between;">
+        <ui:VisualElement name="Left" style="flex-grow: 1; flex-direction: row;">
+            <ui:Label tabindex="-1" text="Walk: WASD" parse-escape-sequences="true" display-tooltip-when-elided="true" name="instructions" style="-unity-font: url(&quot;project://database/Assets/Fonts/PixelifySans-VariableFont_wght.ttf?fileID=12800000&amp;guid=1c177f0b5f1a58c4897d1c5dd1cd2daf&amp;type=3#PixelifySans-VariableFont_wght&quot;); -unity-font-definition: initial;" />
+            <ui:Label tabindex="-1" text="Jump: Space" parse-escape-sequences="true" display-tooltip-when-elided="true" name="instructions_2" style="-unity-font: url(&quot;project://database/Assets/Fonts/PixelifySans-VariableFont_wght.ttf?fileID=12800000&amp;guid=1c177f0b5f1a58c4897d1c5dd1cd2daf&amp;type=3#PixelifySans-VariableFont_wght&quot;); -unity-font-definition: initial;" />
+            <ui:Label tabindex="-1" text="Charge/Discharge Pedestal: W/S" parse-escape-sequences="true" display-tooltip-when-elided="true" name="instructions_charge" style="-unity-font: url(&quot;project://database/Assets/Fonts/PixelifySans-VariableFont_wght.ttf?fileID=12800000&amp;guid=1c177f0b5f1a58c4897d1c5dd1cd2daf&amp;type=3#PixelifySans-VariableFont_wght&quot;); -unity-font-definition: initial;" />
+            <ui:VisualElement name="Right" style="flex-grow: 1; flex-direction: row-reverse;">
+                <ui:Label tabindex="-1" text="Restart Level: R" parse-escape-sequences="true" display-tooltip-when-elided="true" style="flex-direction: column; -unity-font: url(&quot;project://database/Assets/Fonts/PixelifySans-VariableFont_wght.ttf?fileID=12800000&amp;guid=1c177f0b5f1a58c4897d1c5dd1cd2daf&amp;type=3#PixelifySans-VariableFont_wght&quot;); -unity-font-definition: initial;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="Bot" style="flex-grow: 1; width: 100%; height: 100%;" />
+</ui:UXML>

@@ -43,7 +43,7 @@ public class Spring : MonoBehaviour, IChargeable
                 IsActive = true;
                 rb.AddForce((Vector2.up * springForce), ForceMode2D.Impulse);
             }
-
+            AudioManager.Instance.PlaySFX(SoundType.Trampouline_Jump);
         }
     }
 
@@ -55,6 +55,7 @@ public class Spring : MonoBehaviour, IChargeable
     public void Charge()
     {
         springForce += springForceCharge;
+        AudioManager.Instance.PlaySFX(SoundType.Pedestal_Activating);
     }
 
     public void Discharge()
