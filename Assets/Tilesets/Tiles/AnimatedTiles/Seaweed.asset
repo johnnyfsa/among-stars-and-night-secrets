@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Seaweed
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -536922112, guid: 4072c99855af81f4796a988bccbb9a42, type: 3}
-  - {fileID: 2001845442, guid: 4072c99855af81f4796a988bccbb9a42, type: 3}
-  - {fileID: 1668783942, guid: 4072c99855af81f4796a988bccbb9a42, type: 3}
-  - {fileID: -433162086, guid: 4072c99855af81f4796a988bccbb9a42, type: 3}
+  - {fileID: 1099028589, guid: 4072c99855af81f4796a988bccbb9a42, type: 3}
+  - {fileID: -1505354519, guid: 4072c99855af81f4796a988bccbb9a42, type: 3}
+  - {fileID: 1427829659, guid: 4072c99855af81f4796a988bccbb9a42, type: 3}
+  - {fileID: -545417715, guid: 4072c99855af81f4796a988bccbb9a42, type: 3}
   m_MinSpeed: 5
   m_MaxSpeed: 5
   m_AnimationStartTime: 0

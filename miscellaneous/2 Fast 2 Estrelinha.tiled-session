@@ -3,24 +3,28 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "Tilesets/stargame_tilesets-Sheet.tsx",
     "expandedProjectPaths": [
+        ".",
+        "Estágios",
+        "Tilesets",
+        "Backgrounds"
     ],
     "file.lastUsedOpenFilter": "Todos os Ficheiros (*)",
     "fileStates": {
         "Estágios/1-1.tmx": {
             "scale": 1.16375,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 320.515574650913,
-                "y": 239.74221267454348
+                "x": 308.05585392051563,
+                "y": 250.05370569280342
             }
         },
         "Estágios/1-2.tmx": {
             "scale": 1.16375,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 302.47046186895807,
+                "x": 168.85069817400648,
                 "y": 239.74221267454348
             }
         },
@@ -28,17 +32,53 @@
             "scale": 1.16375,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 302.47046186895807,
+                "x": 302.04081632653066,
                 "y": 239.74221267454348
+            }
+        },
+        "Estágios/2-1.tmx": {
+            "scale": 1.387890625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 320.2701942020827,
+                "y": 239.9324514494793
+            }
+        },
+        "Estágios/2-3.tmx": {
+            "scale": 1.387890625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 320.2701942020827,
+                "y": 239.9324514494793
+            }
+        },
+        "Estágios/4-2.tmx": {
+            "scale": 1.387890625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 320.2701942020827,
+                "y": 239.9324514494793
+            }
+        },
+        "Estágios/4-3.tmx": {
+            "scale": 1.387890625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 320.2701942020827,
+                "y": 239.9324514494793
             }
         },
         "Estágios/Estágio Base.tmx": {
             "scale": 1.16375,
-            "selectedLayer": -1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 319.65628356605805,
+                "x": 320.0859291084855,
                 "y": 239.74221267454348
             }
+        },
+        "Tilesets/stargame_tilesets-Sheet.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         }
     },
     "last.imagePath": "D:/Users/Lobba/Documents/Game Jams/Ctrl Alt Label/Tilesets",
@@ -46,9 +86,18 @@
     "map.lastUsedFormat": "tmx",
     "map.width": 20,
     "openFiles": [
+        "Tilesets/stargame_tilesets-Sheet.tsx"
     ],
     "project": "2 Fast 2 Estrelinha.tiled-project",
     "recentFiles": [
+        "Tilesets/stargame_tilesets-Sheet.tsx",
+        "Estágios/1-1.tmx",
+        "Estágios/1-2.tmx",
+        "Estágios/1-3.tmx",
+        "Estágios/2-1.tmx",
+        "Estágios/2-3.tmx",
+        "Estágios/4-2.tmx",
+        "Estágios/4-3.tmx",
         "Estágios/Estágio Base.tmx"
     ],
     "tileset.lastUsedFormat": "tsx"

@@ -34,14 +34,22 @@ public class Wires : MonoBehaviour
         tilemapRenderer = GetComponent<TilemapRenderer>();
         chargerScript = charger.GetComponent<Charger>();
         chargerScript.OnChargesCarriedNumberIncreased += ChangeTileColorCharge;
+        chargerScript.OnChargesCarriedNumberDecreased += DecreaseCharges;
         chargerScript.OnDischarge += ChangeTileColorDischarge;
 
+    }
+
+    private void DecreaseCharges()
+    {
+        numCharges--;
     }
 
     void OnDestroy()
     {
         chargerScript.OnCharge -= ChangeTileColorCharge;
         chargerScript.OnDischarge -= ChangeTileColorDischarge;
+        chargerScript.OnChargesCarriedNumberIncreased -= ChangeTileColorCharge;
+        chargerScript.OnChargesCarriedNumberDecreased -= DecreaseCharges;
     }
 
     // Referência ao Tilemap
@@ -60,8 +68,6 @@ public class Wires : MonoBehaviour
             // Iniciar a corização gradual
             StartCoroutine(ColorizeTiles(material, startColor, endColor, transitionDuration));
         }
-
-
 
     }
 
