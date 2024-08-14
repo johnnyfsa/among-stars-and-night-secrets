@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 885243670036336844}
   m_Layer: 0
-  m_Name: PointB (1)
+  m_Name: Point C
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1374637610948336676}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.18, y: 8.57, z: 0}
+  m_LocalPosition: {x: 3.12, y: 4.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 2722217718298511278}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.18, y: 5.03, z: 0}
+  m_LocalPosition: {x: -0.9, y: 4.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 5551987384041724483}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.1, y: 5.03, z: 0}
+  m_LocalPosition: {x: -3.33, y: 4.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -168,7 +168,7 @@ SpriteRenderer:
   m_SortingLayerID: 1004595181
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1964615844, guid: 4072c99855af81f4796a988bccbb9a42, type: 3}
+  m_Sprite: {fileID: 587337314, guid: 4072c99855af81f4796a988bccbb9a42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

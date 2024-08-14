@@ -8,9 +8,6 @@ using UnityEngine.Windows;
 
 public class Player : MonoBehaviour
 {
-    public event System.Action OnCharge;
-    public event System.Action OnDischarge;
-
 
     [Header("Animation")]
     private Animator animator;
@@ -248,11 +245,11 @@ public class Player : MonoBehaviour
         {
             if (callback.ReadValue<Vector2>().normalized.y > 0)
             {
-                OnCharge?.Invoke();
+                EventManager.TriggerPlayerCharge();
             }
             else if (callback.ReadValue<Vector2>().normalized.y < 0)
             {
-                OnDischarge?.Invoke();
+                EventManager.TriggerPlayerDischarge();
             }
         }
         if (callback.performed && callback.ReadValue<Vector2>().normalized.y != 0)

@@ -167,7 +167,7 @@ MonoBehaviour:
   platformLayer:
     serializedVersion: 2
     m_Bits: 128
-  jumpForce: 7.5
+  jumpForce: 6.5
   numberOfChargesCarried: 0
   maxNumberOfCharges: 1
   isCharged: 0

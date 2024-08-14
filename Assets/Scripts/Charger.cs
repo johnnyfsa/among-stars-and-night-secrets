@@ -16,6 +16,9 @@ public class Charger : MonoBehaviour
     GameObject[] chargeableObjects;
     [SerializeField]
     GameObject[] chargeVisuals;
+    [SerializeField]
+    private GameObject chargeVisualOff;
+    private List<GameObject> chargesVisualsOff;
     private List<IChargeable> chargeables;
 
     [SerializeField]
@@ -31,15 +34,15 @@ public class Charger : MonoBehaviour
     void Awake()
     {
 
-        player.OnCharge += Charge;
-        player.OnDischarge += Discharge;
+        EventManager.OnPlayerCharge += Charge;
+        EventManager.OnPlayerDischarge += Discharge;
         chargeables = new List<IChargeable>();
     }
 
     void OnDestroy()
     {
-        player.OnCharge -= Charge;
-        player.OnDischarge -= Discharge;
+        EventManager.OnPlayerCharge -= Charge;
+        EventManager.OnPlayerDischarge -= Discharge;
     }
 
     void Start()
@@ -49,6 +52,13 @@ public class Charger : MonoBehaviour
             chargeables.Add(chargeableObjects[i].GetComponent<IChargeable>());
         }
         numberOfChargesCarried = 0;
+        chargesVisualsOff = new List<GameObject>();
+        for(int i = 0; i < chargeVisuals.Length; i++)
+        {
+            var temp = Instantiate(chargeVisualOff, chargeVisuals[i].transform.position, Quaternion.identity, transform);
+            chargesVisualsOff.Add(temp);
+            temp.SetActive(true);
+        }
     }
 
 
@@ -66,6 +76,7 @@ public class Charger : MonoBehaviour
             OnChargesCarriedNumberIncreased?.Invoke();
             numberOfChargesCarried++;
             chargeVisuals[numberOfChargesCarried - 1].SetActive(true);
+            chargesVisualsOff[numberOfChargesCarried - 1].SetActive(false);
             AudioManager.Instance.PlaySFX(SoundType.Energy_Deposited);
         }
     }
@@ -85,6 +96,7 @@ public class Charger : MonoBehaviour
                     chargeable.Discharge();
                 }
                 chargeVisuals[numberOfChargesCarried].SetActive(false);
+                chargesVisualsOff[numberOfChargesCarried].SetActive(true);
                 if (numberOfChargesCarried == 0)
                 {
                     OnDischarge?.Invoke();
