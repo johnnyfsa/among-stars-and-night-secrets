@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         GetCurrentStage();
-        if (currentStage == Stage.Ocean_1)
+        if (currentStage != Stage.Main_Menu || currentStage != Stage.Ending)
         {
             //use the AudioManager to play the background music
             AudioManager.Instance.PlayMusic(SoundType.Music_Loop);

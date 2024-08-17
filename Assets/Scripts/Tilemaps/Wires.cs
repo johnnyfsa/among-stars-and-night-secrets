@@ -25,6 +25,7 @@ public class Wires : MonoBehaviour
 
     [SerializeField]
     private int maxNumCharges;
+    [SerializeField]
     private int numCharges;
 
     void Awake()
@@ -35,13 +36,16 @@ public class Wires : MonoBehaviour
         chargerScript = charger.GetComponent<Charger>();
         chargerScript.OnChargesCarriedNumberIncreased += ChangeTileColorCharge;
         chargerScript.OnChargesCarriedNumberDecreased += DecreaseCharges;
-        chargerScript.OnDischarge += ChangeTileColorDischarge;
 
     }
 
     private void DecreaseCharges()
     {
         numCharges--;
+        if (numCharges < maxNumCharges)
+        {
+            ChangeTileColorDischarge();
+        }
     }
 
     void OnDestroy()
