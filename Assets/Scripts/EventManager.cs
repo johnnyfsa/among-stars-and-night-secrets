@@ -14,4 +14,9 @@ public static class EventManager
     {
         OnPlayerDischarge?.Invoke();
     }
+
+    public static void TriggerRestartLevel()
+    {
+        GameManager.Instance.RestartStage();
+    }
 }

@@ -317,4 +317,14 @@ public class Player : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
     }
+
+
+    public void RestartLevel(InputAction.CallbackContext callback)
+    {
+        if (callback.performed)
+        {
+            print("restart level");
+            EventManager.TriggerRestartLevel();
+        }
+    }
 }
