@@ -29,6 +29,9 @@ public class Charger : MonoBehaviour
     [SerializeField]
     int numberOfChargesCarried;
 
+    [SerializeField]
+    int maxNumCharges;
+
     public int NumberOfChargesCarried { get => numberOfChargesCarried; set => numberOfChargesCarried = value; }
 
     void Awake()
@@ -53,18 +56,19 @@ public class Charger : MonoBehaviour
         }
         numberOfChargesCarried = 0;
         chargesVisualsOff = new List<GameObject>();
-        for(int i = 0; i < chargeVisuals.Length; i++)
+        for (int i = 0; i < chargeVisuals.Length; i++)
         {
             var temp = Instantiate(chargeVisualOff, chargeVisuals[i].transform.position, Quaternion.identity, transform);
             chargesVisualsOff.Add(temp);
             temp.SetActive(true);
         }
+        maxNumCharges = chargeVisuals.Length;
     }
 
 
     public void Charge()
     {
-        if (isInChargingArea && player.NumberOfChargesCarried > 0)
+        if (isInChargingArea && player.NumberOfChargesCarried > 0 && numberOfChargesCarried < maxNumCharges)
         {
 
             foreach (IChargeable chargeable in chargeables)

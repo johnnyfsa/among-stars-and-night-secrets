@@ -14,4 +14,14 @@ public class Charge : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<Player>(out Player player))
+        {
+            player.NumberOfChargesCarried += 1;
+            AudioManager.Instance.PlaySFX(SoundType.Energy_Gathered);
+        }
+        Destroy(gameObject);
+    }
 }
