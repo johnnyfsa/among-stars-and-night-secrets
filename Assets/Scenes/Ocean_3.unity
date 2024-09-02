@@ -4974,6 +4974,7 @@ MonoBehaviour:
   endColor: {r: 1, g: 1, b: 1, a: 1}
   transitionDuration: 1
   maxNumCharges: 1
+  numCharges: 0
 --- !u!1 &820853494 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6432424917129759536, guid: e40e25dba78d20347aeb8db0e6e5b796, type: 3}
@@ -5562,6 +5563,7 @@ MonoBehaviour:
   endColor: {r: 1, g: 1, b: 1, a: 1}
   transitionDuration: 1
   maxNumCharges: 1
+  numCharges: 0
 --- !u!1001 &894193392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5656,6 +5658,7 @@ MonoBehaviour:
   endColor: {r: 1, g: 1, b: 1, a: 1}
   transitionDuration: 1
   maxNumCharges: 1
+  numCharges: 0
 --- !u!1001 &1351070465
 PrefabInstance:
   m_ObjectHideFlags: 0

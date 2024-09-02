@@ -12,6 +12,17 @@ public class Stairs : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.TryGetComponent<Player>(out Player p))
+        {
+            if (p.IsOnStairs && !p.IsGrounded)
+            {
+                p.transform.position = new Vector3(transform.position.x, p.transform.position.y, p.transform.position.z);
+            }
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("player"))
