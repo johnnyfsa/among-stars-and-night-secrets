@@ -7,8 +7,6 @@ public class LoopingPlatform : MonoBehaviour, IChargeable
     private List<Transform> wayPoints;
 
     [SerializeField]
-    Charger charger;
-
     Vector3 nextPosition;
     Vector3 startingPosition;
     [SerializeField]
@@ -46,6 +44,10 @@ public class LoopingPlatform : MonoBehaviour, IChargeable
                     if (currentIndex == numberOfChargesCarried)
                     {
                         ascending = false;
+                    }
+                    else if (currentIndex > numberOfChargesCarried) //means that the player removed a charge in the midlle of the asceding movement
+                    {
+                        currentIndex--;
                     }
                 }
                 else
