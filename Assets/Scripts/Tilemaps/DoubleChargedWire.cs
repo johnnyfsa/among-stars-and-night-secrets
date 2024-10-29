@@ -1,15 +1,16 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Wires : MonoBehaviour
+public class DoubleChargedWire : MonoBehaviour
 {
     [SerializeField]
-    GameObject charger;
-    private Charger chargerScript;
+    Wires wire1;
+    [SerializeField]
+    Wires wire2;
 
+    [SerializeField]
     // Referência ao TilemapRenderer
     private TilemapRenderer tilemapRenderer;
     private Tilemap tilemap;
@@ -25,77 +26,46 @@ public class Wires : MonoBehaviour
 
     [SerializeField]
     private int maxNumCharges;
-
-    public int MaxNumCharges
-    {
-        get { return maxNumCharges; }
-        set { maxNumCharges = value; }
-    }
-
     [SerializeField]
-    private int numCharges;
-
-    public int NumCharges
-    {
-        get { return numCharges; }
-        set { numCharges = value; }
-    }
+    private bool isCharged;
 
     void Awake()
     {
-        numCharges = 0;
+        isCharged = false;
         tilemap = GetComponent<Tilemap>();
         tilemapRenderer = GetComponent<TilemapRenderer>();
-        chargerScript = charger.GetComponent<Charger>();
-        chargerScript.OnChargesCarriedNumberIncreased += ChangeTileColorCharge;
-        chargerScript.OnChargesCarriedNumberDecreased += DecreaseCharges;
-
     }
 
-    private void DecreaseCharges()
+    void Update()
     {
-        numCharges--;
-        if (numCharges < maxNumCharges)
+        if (!isCharged && (wire1.NumCharges == wire1.MaxNumCharges && wire2.NumCharges == wire2.MaxNumCharges))
+        {
+            ChangeTileColorCharge();
+            isCharged = true;
+        }
+        else if (isCharged && (wire1.NumCharges != wire1.MaxNumCharges || wire2.NumCharges != wire2.MaxNumCharges))
         {
             ChangeTileColorDischarge();
+            isCharged = false;
         }
+
     }
 
-    void OnDestroy()
-    {
-        chargerScript.OnCharge -= ChangeTileColorCharge;
-        chargerScript.OnDischarge -= ChangeTileColorDischarge;
-        chargerScript.OnChargesCarriedNumberIncreased -= ChangeTileColorCharge;
-        chargerScript.OnChargesCarriedNumberDecreased -= DecreaseCharges;
-    }
-
-    // Referência ao Tilemap
-
-
-
-    // Evento que aciona a mudança de cor
     public void ChangeTileColorCharge()
     {
-        numCharges++;
-        if (numCharges == maxNumCharges)
-        {
-            // Obter o material do tileset
-            Material material = tilemapRenderer.material;
-
-            // Iniciar a corização gradual
-            StartCoroutine(ColorizeTiles(material, startColor, endColor, transitionDuration));
-        }
+        // Obter o material do tileset
+        Material material = tilemapRenderer.material;
+        StartCoroutine(ColorizeTiles(material, startColor, endColor, transitionDuration));
 
     }
-
     public void ChangeTileColorDischarge()
     {
         // Obter o material do tileset
         Material material = tilemapRenderer.material;
-
-        // Iniciar a corização gradual
         StartCoroutine(ColorizeTiles(material, endColor, startColor, transitionDuration));
+
     }
+
 
     // Coroutine para realizar a transição de cor
     private IEnumerator ColorizeTiles(Material material, Color startColor, Color endColor, float duration)

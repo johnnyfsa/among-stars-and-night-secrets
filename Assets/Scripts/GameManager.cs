@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         GetCurrentStage();
-        if (currentStage != Stage.Main_Menu || currentStage != Stage.Ending)
+        if (currentStage != Stage.Main_Menu && currentStage != Stage.Ending)
         {
             //use the AudioManager to play the background music
             AudioManager.Instance.PlayMusic(SoundType.Music_Loop);
@@ -52,6 +52,54 @@ public class GameManager : MonoBehaviour
             AudioManager.Instance.PlayMusic(SoundType.Music_Loop);
         }
         else if (scene.buildIndex == (int)Stage.Ocean_3)
+        {
+            AudioManager.Instance.PlayMusic(SoundType.Music_Loop);
+        }
+        else if (scene.buildIndex == (int)Stage.Beach_1)
+        {
+            AudioManager.Instance.PlayMusic(SoundType.Music_Loop);
+        }
+        else if (scene.buildIndex == (int)Stage.Beach_2)
+        {
+            AudioManager.Instance.PlayMusic(SoundType.Music_Loop);
+        }
+        else if (scene.buildIndex == (int)Stage.Beach_3)
+        {
+            AudioManager.Instance.PlayMusic(SoundType.Music_Loop);
+        }
+        else if (scene.buildIndex == (int)Stage.Forest_1)
+        {
+            AudioManager.Instance.PlayMusic(SoundType.Music_Loop);
+        }
+        else if (scene.buildIndex == (int)Stage.Forest_2)
+        {
+            AudioManager.Instance.PlayMusic(SoundType.Music_Loop);
+        }
+        else if (scene.buildIndex == (int)Stage.Forest_3)
+        {
+            AudioManager.Instance.PlayMusic(SoundType.Music_Loop);
+        }
+        else if (scene.buildIndex == (int)Stage.Mountain_1)
+        {
+            AudioManager.Instance.PlayMusic(SoundType.Music_Loop);
+        }
+        else if (scene.buildIndex == (int)Stage.Mountain_2)
+        {
+            AudioManager.Instance.PlayMusic(SoundType.Music_Loop);
+        }
+        else if (scene.buildIndex == (int)Stage.Mountain_3)
+        {
+            AudioManager.Instance.PlayMusic(SoundType.Music_Loop);
+        }
+        else if (scene.buildIndex == (int)Stage.Clouds_1)
+        {
+            AudioManager.Instance.PlayMusic(SoundType.Music_Loop);
+        }
+        else if (scene.buildIndex == (int)Stage.Clouds_2)
+        {
+            AudioManager.Instance.PlayMusic(SoundType.Music_Loop);
+        }
+        else if (scene.buildIndex == (int)Stage.Clouds_3)
         {
             AudioManager.Instance.PlayMusic(SoundType.Music_Loop);
         }
@@ -87,5 +135,10 @@ public class GameManager : MonoBehaviour
     public void RestartStage()
     {
         SceneManager.LoadScene((int)currentStage);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene((int)Stage.Main_Menu);
     }
 }

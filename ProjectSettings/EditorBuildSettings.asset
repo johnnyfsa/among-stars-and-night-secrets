@@ -10,11 +10,50 @@ EditorBuildSettings:
     guid: 3cc35e83038f3f446868c410e9f6a163
   - enabled: 1
     path: Assets/Scenes/Ocean_1.unity
-    guid: 9d80fad811e85954aba94f0398e3070d
+    guid: 12c0d6fac32b5474ab2ea744c7e2ccd6
   - enabled: 1
     path: Assets/Scenes/Ocean_2.unity
-    guid: d23e293a3b34183489c2a0473e5726bb
+    guid: c77fc4c31cc1d244199f7c6b2d0a4029
   - enabled: 1
     path: Assets/Scenes/Ocean_3.unity
     guid: 32661e6259511db418738d356eda3138
+  - enabled: 1
+    path: Assets/Scenes/Beach_1.unity
+    guid: b9c205e2beb452c4fbd8b61af11ecd4f
+  - enabled: 1
+    path: Assets/Scenes/Beach_2.unity
+    guid: ffb02eabecc81374da720e330446ecf8
+  - enabled: 1
+    path: Assets/Scenes/Beach_3.unity
+    guid: ff7d182bfd8e4184d9a4fc50806c71f2
+  - enabled: 1
+    path: Assets/Scenes/Forest_1.unity
+    guid: e8ec4550d24a1b94cbd37e3686d7f281
+  - enabled: 1
+    path: Assets/Scenes/Forest_2.unity
+    guid: 9c54d718b33685b4a81ddbc6b7345907
+  - enabled: 1
+    path: Assets/Scenes/Forest_3.unity
+    guid: f5807b0b4b9af6846952b82025bd3b1f
+  - enabled: 1
+    path: Assets/Scenes/Mountain_1.unity
+    guid: 18eff8e0222e8ba41b9d70f957fae3c0
+  - enabled: 1
+    path: Assets/Scenes/Mountain_2.unity
+    guid: 2076101e44136a047ac8d8c96b813e31
+  - enabled: 1
+    path: Assets/Scenes/Mountain_3.unity
+    guid: 39fe362db01072d4d989b2ca6e37027c
+  - enabled: 1
+    path: Assets/Scenes/Clouds_1.unity
+    guid: 2294d904d29a6e14f91542f126ca802a
+  - enabled: 1
+    path: Assets/Scenes/Clouds_2.unity
+    guid: 052b41a164bd28948884464d5ba863fc
+  - enabled: 1
+    path: Assets/Scenes/Clouds_3.unity
+    guid: 605802dd0446e3e479e2980c83e90f37
+  - enabled: 1
+    path: Assets/Scenes/_EndingScene.unity
+    guid: ec63c50985d048b478dd72b02fc1e110
   m_configObjects: {}
